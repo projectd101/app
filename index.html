@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Citadel Finance – Markets and news on your Mac</title>
+<meta name="description" content="A Mac app that gives you updates on stocks, crypto, commodities and Polymarket, plus the news behind them, in two clicks.">
+<meta property="og:title" content="Citadel Finance">
+<meta property="og:description" content="Stocks, crypto, commodities, Polymarket and news. Two clicks, on your Mac.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f5;--ink:#0f1b2d;--mute:#5a6678;--line:#d3d9e2;--panel:#fff;--blue:#2b59e6;--up:#0f8a5f;--down:#c8372d;
+--font:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media(prefers-color-scheme:dark){:root{--bg:#0b1220;--ink:#eaf0fa;--mute:#93a0b5;--line:#233049;--panel:#121c30;--blue:#6b8cff;--up:#34d399;--down:#f87171}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--font);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;font-size:1.125rem}
+.brand i{width:30px;height:30px;border-radius:8px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-style:normal;font-size:16px}
+nav ul{display:flex;gap:28px;list-style:none;padding:0;align-items:center}
+nav a{text-decoration:none;color:var(--mute);font-weight:500}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg)!important;padding:13px 22px;border-radius:999px;font-weight:700;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.sm{padding:9px 16px;font-size:.95rem}
+.btn.ghost{background:transparent;color:var(--ink)!important;box-shadow:inset 0 0 0 1.5px var(--line)}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:56px 0 96px}
+h1{font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.02;letter-spacing:-.035em;font-weight:900}
+.lead{margin:22px 0 32px;color:var(--mute);font-size:1.25rem;max-width:30em}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.fine{margin-top:16px;color:var(--mute);font-size:.9rem}
+/* app mock */
+.app{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:0 30px 60px -30px rgba(15,27,45,.45);overflow:hidden}
+.bar{display:flex;gap:7px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.bar b{width:12px;height:12px;border-radius:50%;background:#ff5f57}.bar b:nth-child(2){background:#febc2e}.bar b:nth-child(3){background:#28c840}
+.tabs{display:flex;gap:4px;padding:10px 12px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs button{font:600 .9rem var(--font);color:var(--mute);background:none;border:0;padding:8px 12px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--bg)}
+.rows{padding:6px 16px;min-height:208px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.row:last-child{border:0}
+.row span:first-child{font-weight:700}
+.row small{display:block;color:var(--mute);font-weight:400;font-size:.8rem}
+.row span:last-child{text-align:right}
+.up{color:var(--up)}.down{color:var(--down)}
+.news{background:var(--bg);padding:14px 16px;font-size:.92rem;border-top:1px solid var(--line)}
+.news b{display:block;margin-bottom:2px}
+.note{font-size:.78rem;color:var(--mute);padding:8px 16px 12px;background:var(--bg)}
+section{padding:88px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.08;letter-spacing:-.03em;font-weight:900;max-width:16em}
+.sub{color:var(--mute);margin-top:14px;max-width:34em}
+.markets{margin-top:44px;display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+.markets div{padding:24px 0;border-top:1px solid var(--line)}
+.markets h3{font-size:1.35rem;letter-spacing:-.02em}
+.markets p{color:var(--mute);margin-top:6px}
+.steps{margin-top:44px;display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:36px}
+.step .n{font-size:4.5rem;font-weight:900;letter-spacing:-.05em;line-height:1;color:var(--blue)}
+.step h3{margin:14px 0 6px;font-size:1.4rem}
+.step p{color:var(--mute)}
+details{border-top:1px solid var(--line);padding:20px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;font-size:1.1rem;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"+";font-size:1.4rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--mute);margin-top:10px;max-width:42em}
+.faq{margin-top:36px}
+.final{text-align:center;padding:110px 0}
+.final h2{margin:0 auto}
+.final .cta{justify-content:center;margin-top:32px}
+footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--mute);font-size:.92rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{margin-left:20px;text-decoration:none}
+@media(max-width:820px){.hero{grid-template-columns:1fr;padding-bottom:64px}.markets,.steps{grid-template-columns:1fr}nav ul li:not(:last-child){display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#top"><i>🏛</i>Citadel Finance</a>
+    <ul>
+      <li><a href="#markets">Markets</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a class="btn sm" href="#download">Download</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <h1>Every market. Two clicks.</h1>
+      <p class="lead">Citadel Finance is a Mac app that shows you what moved in stocks, crypto, commodities and Polymarket, with the news behind each move.</p>
+      <div class="cta">
+        <a class="btn" href="https://github.com/YOUR_USERNAME/citadel-finance/releases/latest/download/CitadelFinance.dmg" data-dmg>Download for Mac (.dmg)</a>
+        <a class="btn ghost" href="#how">See how it works</a>
+      </div>
+      <p class="fine">Free to download. Requires macOS.</p>
+    </div>
+
+    <div>
+      <div class="app" aria-label="Citadel Finance app preview">
+        <div class="bar" aria-hidden="true"><b></b><b></b><b></b></div>
+        <div class="tabs" role="tablist" id="tabs"></div>
+        <div class="rows" id="rows" role="tabpanel"></div>
+        <div class="news" id="news"></div>
+        <div class="note">Preview with sample data.</div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<section id="markets"><div class="wrap">
+  <h2>Four markets and their news, in one window.</h2>
+  <p class="sub">Stop switching between a brokerage, an exchange, a prediction site and a news feed.</p>
+  <div class="markets">
+    <div><h3>Stocks</h3><p>Prices, daily moves and the headlines driving them.</p></div>
+    <div><h3>Crypto</h3><p>Track the coins you care about, with news as it breaks.</p></div>
+    <div><h3>Commodities</h3><p>Gold, oil and more, next to everything else you follow.</p></div>
+    <div><h3>Polymarket</h3><p>See current odds on the events that move markets.</p></div>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <h2>Two clicks from question to answer.</h2>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h3>Open Citadel</h3><p>Launch the app on your Mac. Your markets are already there.</p></div>
+    <div class="step"><div class="n">2</div><h3>Pick a market</h3><p>Choose stocks, crypto, commodities or Polymarket. Prices and related news appear together.</p></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <h2>Questions</h2>
+  <div class="faq">
+    <details><summary>What does Citadel Finance track?</summary><p>Stocks, crypto, commodities and Polymarket, plus news related to each.</p></details>
+    <details><summary>How do I install it?</summary><p>Download the .dmg, open it, and drag Citadel Finance into your Applications folder.</p></details>
+    <details><summary>Is it free?</summary><p>Yes, the download is free.</p></details>
+    <details><summary>Is this financial advice?</summary><p>No. Citadel Finance shows information. It does not recommend trades, and you are responsible for your own decisions.</p></details>
+  </div>
+</div></section>
+
+<section class="final" id="download"><div class="wrap">
+  <h2>Put the markets on your Mac.</h2>
+  <div class="cta"><a class="btn" href="https://github.com/YOUR_USERNAME/citadel-finance/releases/latest/download/CitadelFinance.dmg" data-dmg>Download for Mac (.dmg)</a></div>
+  <p class="fine">Requires macOS.</p>
+</div></section>
+
+<div class="wrap">
+  <footer>
+    <span>© 2026 Citadel Finance. Not financial advice.</span>
+    <span><a href="https://github.com/YOUR_USERNAME/citadel-finance">GitHub</a><a href="mailto:you@example.com">Contact</a></span>
+  </footer>
+</div>
+
+<script>
+const D={
+ Stocks:{r:[["AAPL","Apple","228.40","+1.2%",1],["NVDA","NVIDIA","131.85","+2.6%",1],["TSLA","Tesla","241.10","-0.8%",0],["MSFT","Microsoft","421.30","+0.4%",1]],n:["Chipmakers lead the market higher","Sample headline for the selected market."]},
+ Crypto:{r:[["BTC","Bitcoin","64,210","+1.9%",1],["ETH","Ethereum","2,610","+0.7%",1],["SOL","Solana","148.20","-2.1%",0],["XRP","XRP","0.54","+0.3%",1]],n:["Bitcoin holds above a key level","Sample headline for the selected market."]},
+ Commodities:{r:[["XAU","Gold","2,655","+0.5%",1],["WTI","Crude oil","68.40","-1.4%",0],["XAG","Silver","31.20","+1.1%",1],["NG","Natural gas","2.31","-0.6%",0]],n:["Oil slips as supply outlook improves","Sample headline for the selected market."]},
+ Polymarket:{r:[["Rate cut by year end?","Yes","62%","+4",1],["Next Fed chair?","Leading pick","48%","-2",0],["Major ETF approved?","Yes","71%","+1",1],["Recession next year?","Yes","29%","-3",0]],n:["Traders shift odds after jobs report","Sample headline for the selected market."]}
+};
+const tabs=document.getElementById("tabs"),rows=document.getElementById("rows"),news=document.getElementById("news");
+function show(k){
+ [...tabs.children].forEach(b=>b.setAttribute("aria-selected",b.textContent===k));
+ rows.innerHTML=D[k].r.map(x=>`<div class="row"><span>${x[0]}<small>${x[1]}</small></span><span>${x[2]}<small class="${x[4]?"up":"down"}">${x[3]}</small></span></div>`).join("");
+ news.innerHTML=`<b>${D[k].n[0]}</b>${D[k].n[1]}`;
+}
+Object.keys(D).forEach(k=>{const b=document.createElement("button");b.role="tab";b.textContent=k;b.onclick=()=>show(k);tabs.appendChild(b)});
+show("Stocks");
+</script>
+</body>
+</html>
