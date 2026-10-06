@@ -236,6 +236,20 @@ h2{font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.05;letter-spacing:-.04em;fon
 .reveal.in{opacity:1;transform:none}
 
 
+/* demo video in a terminal-style window */
+.demo{padding:64px 16px 8px}
+.demo-in{max-width:980px;margin:0 auto;text-align:center}
+.demo-kicker{margin:0 0 10px;font-size:.8rem;font-weight:600;letter-spacing:.14em;color:var(--mute);text-transform:uppercase}
+.demo h2{margin:0 0 30px;font:700 clamp(1.6rem,3.4vw,2.3rem)/1.15 var(--font);letter-spacing:-.02em;color:var(--ink)}
+.demo-win{border-radius:14px;overflow:hidden;background:#0b0d12;border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.demo-bar{position:relative;display:flex;align-items:center;height:40px;padding:0 14px;background:#1a1c22;border-bottom:1px solid rgba(255,255,255,.08)}
+.demo-dots{display:flex;gap:8px;position:relative;z-index:1}
+.demo-dots i{display:block;width:12px;height:12px;border-radius:50%}
+.demo-dots i:nth-child(1){background:#ff5f57}.demo-dots i:nth-child(2){background:#febc2e}.demo-dots i:nth-child(3){background:#28c840}
+.demo-title{position:absolute;left:0;right:0;text-align:center;font:500 .8rem var(--font);color:#9aa0ac;pointer-events:none}
+.demo-win video{display:block;width:100%;height:auto;background:#000}
+@media(max-width:560px){.demo{padding-top:44px}.demo-bar{height:34px}.demo-dots i{width:10px;height:10px}}
+
 /* terminal install box */
 .install{width:min(760px,100%);margin:0 auto;text-align:left}
 .install-step{margin:0 0 12px;color:var(--mute);font-size:.95rem;text-align:center}
@@ -319,10 +333,18 @@ h2{font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.05;letter-spacing:-.04em;fon
     <div class="install">
         <p class="install-step">Open <b>Terminal</b> (⌘ Space, type Terminal), paste this, press Return:</p>
         <div class="install-box"><code>curl -fsSL https://github.com/projectd101/app/releases/latest/download/Tokr.dmg -o /tmp/Tokr.dmg &amp;&amp; hdiutil attach /tmp/Tokr.dmg -nobrowse -quiet &amp;&amp; cp -R /Volumes/Tokr/Tokr.app /Applications/ &amp;&amp; hdiutil detach /Volumes/Tokr -quiet &amp;&amp; rm /tmp/Tokr.dmg &amp;&amp; open -a Tokr</code><button type="button" class="copy-btn" data-copy>Copy</button></div>
-        <p class="fine">Free. Requires macOS. Tokr isn’t notarized by Apple yet, so a normal browser download gets blocked. This installs it directly and it opens with no warning.</p>
       </div>
   </div>
 </header>
+
+<section class="demo" id="demo" aria-label="Install demo video"><div class="demo-in">
+  <p class="demo-kicker">See it in action</p>
+  <h2>Copy. Paste. Done.</h2>
+  <div class="demo-win">
+    <div class="demo-bar"><div class="demo-dots"><i></i><i></i><i></i></div><span class="demo-title">Terminal — installing Tokr</span></div>
+    <video id="demoVideo" src="tokr-demo.mp4" muted loop playsinline controls preload="metadata"></video>
+  </div>
+</div></section>
 
 <section id="four" class="quad" aria-label="How the four corners work"><div class="quad-track" id="qTrack"><div class="quad-sticky" id="qStage">
   <div class="ghosts" id="qGhosts" aria-hidden="true"></div>
@@ -348,7 +370,6 @@ h2{font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.05;letter-spacing:-.04em;fon
 <div class="dl" id="download"><div class="install">
         <p class="install-step">Open <b>Terminal</b> (⌘ Space, type Terminal), paste this, press Return:</p>
         <div class="install-box"><code>curl -fsSL https://github.com/projectd101/app/releases/latest/download/Tokr.dmg -o /tmp/Tokr.dmg &amp;&amp; hdiutil attach /tmp/Tokr.dmg -nobrowse -quiet &amp;&amp; cp -R /Volumes/Tokr/Tokr.app /Applications/ &amp;&amp; hdiutil detach /Volumes/Tokr -quiet &amp;&amp; rm /tmp/Tokr.dmg &amp;&amp; open -a Tokr</code><button type="button" class="copy-btn" data-copy>Copy</button></div>
-        <p class="fine">Free. Requires macOS. Tokr isn’t notarized by Apple yet, so a normal browser download gets blocked. This installs it directly and it opens with no warning.</p>
       </div></div>
 </section>
 
@@ -749,6 +770,16 @@ document.querySelectorAll('[data-copy]').forEach(function(b){
     function fb(){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(a);done()}
   });
 });
+</script>
+<script>
+(function(){
+  var v=document.getElementById('demoVideo'); if(!v) return;
+  v.muted=true;
+  function play(){var p=v.play(); if(p&&p.catch) p.catch(function(){});}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting) play(); else v.pause(); });},{threshold:.4}).observe(v);
+  } else { play(); }
+})();
 </script>
 </body>
 </html>
