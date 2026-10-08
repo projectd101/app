@@ -263,6 +263,8 @@ h2{font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.05;letter-spacing:-.04em;fon
 .copy-btn.ok{background:#3ddc84;color:#04210f}
 .install .fine{margin-top:14px;text-align:center;line-height:1.5}
 @media(max-width:560px){.install-box{flex-direction:column}.copy-btn{width:100%}}
+.ph-badge{display:flex;justify-content:center;margin-top:28px}
+.ph-badge img{display:block;max-width:100%;height:auto}
 
 /* download button under the chains */
 .dl{display:flex;flex-direction:column;align-items:center;gap:16px;margin:72px auto 0;padding:0 24px;text-align:center}
@@ -334,6 +336,7 @@ h2{font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.05;letter-spacing:-.04em;fon
         <p class="install-step">Open <b>Terminal</b> (⌘ Space, type Terminal), paste this, press Return:</p>
         <div class="install-box"><code>curl -fsSL https://github.com/projectd101/app/releases/latest/download/Tokr.dmg -o /tmp/Tokr.dmg &amp;&amp; hdiutil attach /tmp/Tokr.dmg -nobrowse -quiet &amp;&amp; cp -R /Volumes/Tokr/Tokr.app /Applications/ &amp;&amp; hdiutil detach /Volumes/Tokr -quiet &amp;&amp; rm /tmp/Tokr.dmg &amp;&amp; open -a Tokr</code><button type="button" class="copy-btn" data-copy>Copy</button></div>
       </div>
+      <div class="ph-badge"><a href="https://www.producthunt.com/products/tokr?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-tokr" target="_blank" rel="noopener noreferrer"><img alt="Tokr - Your trading updates &amp; news with just 2 clicks anywhere | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1272479&amp;theme=light&amp;t=1791438216382"></a></div>
   </div>
 </header>
 
