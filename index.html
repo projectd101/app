@@ -307,7 +307,28 @@ h2{font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.05;letter-spacing:-.04em;fon
   .final{padding:88px 20px}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+
+/* ---------- footer documentation (visible, crawlable text) ---------- */
+.ft-docs{padding:8px 0 64px;border-top:1px solid rgba(255,255,255,.12);margin-top:-8px}
+.ft-docs h2{font:400 clamp(1.8rem,3vw,2.6rem)/1.1 "Instrument Serif",Georgia,"Times New Roman",serif;letter-spacing:-.01em;margin:44px 0 14px}
+.ft-docs h3{font-weight:500;font-size:1.05rem;color:#fff;margin:0 0 8px}
+.ft-docs p,.ft-docs li{color:rgba(255,255,255,.72);font-size:1rem;line-height:1.65}
+.ft-docs p{margin:0 0 14px;max-width:70ch}
+.ft-docs a{color:#cfe0ff;text-underline-offset:3px}
+.ft-docs a:hover{color:#fff}
+.ft-docs ol,.ft-docs ul{margin:0 0 14px;padding-left:1.2em;max-width:70ch}
+.ft-docs li{margin-bottom:6px}
+.ft-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px}
+.ft-card{padding:18px 20px;border-radius:14px;background:rgba(255,255,255,.07)}
+.ft-card p{margin:0}
+.ft-faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 40px}
+.ft-faq p{margin:0}
+@media (max-width:860px){.ft-grid,.ft-faq{grid-template-columns:1fr}}
 </style>
+<link rel="canonical" href="https://app.tokr.workers.dev/">
+<meta property="og:url" content="https://app.tokr.workers.dev/">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "name": "Tokr", "alternateName": "Tokr Mac App", "url": "https://app.tokr.workers.dev/", "operatingSystem": "macOS", "applicationCategory": "FinanceApplication", "description": "Tokr Mac App gives you updates on stocks, crypto, commodities and Polymarket, plus the news behind them, with two clicks, anywhere on your Mac."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Tokr Mac App?", "acceptedAnswer": {"@type": "Answer", "text": "Tokr Mac App is a Mac app that gives you updates on stocks, crypto, commodities and Polymarket prediction markets, plus the news behind them, with two or three clicks from anywhere on your Mac."}}, {"@type": "Question", "name": "Which markets does Tokr Mac App cover?", "acceptedAnswer": {"@type": "Answer", "text": "Tokr Mac App covers four categories: stocks, crypto, commodities (such as gold and oil) and Polymarket events. You pick what to follow from hundreds of markets."}}, {"@type": "Question", "name": "Does Tokr Mac App include news?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Tokr Mac App follows news sources for each category automatically. Follow anything in stocks, crypto, commodities or Polymarket and Tokr Mac App turns on that category's news for you."}}, {"@type": "Question", "name": "How do I install Tokr Mac App?", "acceptedAnswer": {"@type": "Answer", "text": "Open Terminal on your Mac, paste the install command shown on this page and press Return. Tokr Mac App downloads from the project's GitHub releases and installs into your Applications folder."}}, {"@type": "Question", "name": "Do I need to keep a window open to use Tokr Mac App?", "acceptedAnswer": {"@type": "Answer", "text": "No. After a one-time setup, you get updates and news with two or three clicks on the desktop, on any window or in any app, while you are doing something else."}}, {"@type": "Question", "name": "Is Tokr Mac App financial advice?", "acceptedAnswer": {"@type": "Answer", "text": "No. Tokr Mac App shows market information and news for general awareness only. It is not financial, investment or trading advice."}}]}]}</script>
 </head>
 <body>
 
@@ -387,6 +408,38 @@ h2{font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.05;letter-spacing:-.04em;fon
         <div><h4>Contact</h4><a href="#contact" id="contact-link" data-u="cW50MDA0NjAzQGdtYWlsLmNvbQ==">Email us</a></div>
       </nav>
     </div>
+    <section class="ft-docs" id="docs" aria-labelledby="docs-h">
+      <h2 id="docs-h">Tokr Mac App documentation</h2>
+      <p><strong>Tokr Mac App</strong> is a market and news app for macOS. Tokr Mac App gives you updates on stocks, crypto, commodities and Polymarket, plus the news behind them, with two or three clicks from anywhere on your Mac: on the desktop, on top of any window, inside any app. Official site: <a href="https://app.tokr.workers.dev/">https://app.tokr.workers.dev/</a></p>
+
+      <h2>What Tokr Mac App does</h2>
+      <div class="ft-grid">
+        <div class="ft-card"><h3>Stocks updates</h3><p>Follow the stocks you care about. Tokr Mac App tells you what moved and gives you the stock news behind it.</p></div>
+        <div class="ft-card"><h3>Crypto updates</h3><p>Follow Bitcoin and other coins. Tokr Mac App keeps crypto prices and crypto news one click away, around the clock.</p></div>
+        <div class="ft-card"><h3>Commodities updates</h3><p>Track commodities such as gold and oil. Tokr Mac App reports the move and the commodities news driving it.</p></div>
+        <div class="ft-card"><h3>Polymarket updates</h3><p>Follow Polymarket prediction markets and see how the odds change. Tokr Mac App turns shifting probabilities into a quick update.</p></div>
+      </div>
+
+      <h2>How Tokr Mac App works</h2>
+      <ol>
+        <li>Install Tokr Mac App with the one-line Terminal command on this page.</li>
+        <li>Set up Tokr Mac App once: pick the stocks, crypto, commodities and Polymarket events you want to follow.</li>
+        <li>Click anywhere on your Mac. Tokr Mac App gives you an update for what you follow, then the news for that category.</li>
+        <li>News is automatic. Follow anything in a category and Tokr Mac App turns on all of that category's news sources.</li>
+      </ol>
+
+      <h2>Frequently asked questions about Tokr Mac App</h2>
+      <div class="ft-faq">
+      <div><h3>What is Tokr Mac App?</h3><p>Tokr Mac App is a Mac app that gives you updates on stocks, crypto, commodities and Polymarket prediction markets, plus the news behind them, with two or three clicks from anywhere on your Mac.</p></div>
+      <div><h3>Which markets does Tokr Mac App cover?</h3><p>Tokr Mac App covers four categories: stocks, crypto, commodities (such as gold and oil) and Polymarket events. You pick what to follow from hundreds of markets.</p></div>
+      <div><h3>Does Tokr Mac App include news?</h3><p>Yes. Tokr Mac App follows news sources for each category automatically. Follow anything in stocks, crypto, commodities or Polymarket and Tokr Mac App turns on that category's news for you.</p></div>
+      <div><h3>How do I install Tokr Mac App?</h3><p>Open Terminal on your Mac, paste the install command shown on this page and press Return. Tokr Mac App downloads from the project's GitHub releases and installs into your Applications folder.</p></div>
+      <div><h3>Do I need to keep a window open to use Tokr Mac App?</h3><p>No. After a one-time setup, you get updates and news with two or three clicks on the desktop, on any window or in any app, while you are doing something else.</p></div>
+      <div><h3>Is Tokr Mac App financial advice?</h3><p>No. Tokr Mac App shows market information and news for general awareness only. It is not financial, investment or trading advice.</p></div>
+      </div>
+
+      <p style="margin-top:28px">Get Tokr Mac App for Mac at <a href="https://app.tokr.workers.dev/">https://app.tokr.workers.dev/</a>. Tokr Mac App is also listed on <a href="https://www.producthunt.com/products/tokr" rel="noopener">Product Hunt</a>. Tokr Mac App is for information only and is not financial advice.</p>
+    </section>
     <div class="ft-word" aria-hidden="true">Tokr</div>
     <div class="ft-bar"><span>© 2026 Tokr. Not financial advice.</span><span>Made with <i aria-label="love">♥</i> for Mac</span></div>
   </div>
